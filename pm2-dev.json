@@ -1,0 +1,35 @@
+{
+  "apps": [
+    {
+      "exec_mode": "fork",
+      "instances": 1,
+      "script": "index.js",
+      "name": "ecommerce-api",
+      "interpreter": "node",
+      "watch": [
+        "controllers",
+        "middleware",
+        "models",
+        "routes",
+        "services",
+        "pm2-dev.json"
+      ],
+      "env":{
+        "service":{
+          "mongodb":{
+            "local":{
+              "conn_type": "mongodb",
+              "ip":"localhost",
+              "port":"27017",
+              "path":"/ecommerce-db?retryWrites=true&w=majority"
+            }
+          },
+          "app":{
+            "TOKEN_KEY": "ecommerce@Ishow",
+            "UPLOAD_ENDPOINT": "http://localhost:5000"
+          }
+        }
+      }
+    }
+  ]
+}
